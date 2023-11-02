@@ -6,7 +6,8 @@ createApp({
         return {
             contacts : contactList,
             activeContact : '',
-            newMessage : ''
+            newMessage : '',
+            searchTerm : ''
         }
     },
     methods : {
@@ -32,13 +33,10 @@ createApp({
             
         });
        },
-       userAnswer(element){
-        const newMsg = {
-            date : '03/11/2023 00:06:02',
-            message : 'ok',
-            status : 'received'
+       searchContact(contact){
+        if(contact.name.toUpperCase().includes(this.searchTerm.toUpperCase())){
+            return contact
         }
-        element.messages.push(newMsg)
        }
                
     },

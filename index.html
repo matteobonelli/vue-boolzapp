@@ -43,7 +43,7 @@
                         </div>
                         <div class="col-12 flex-grow-1 overflow-y-auto h0 overflow-y-scroll">
                             <div class="row border-bottom py-2" v-for="contact in contacts">
-                                <div class="col-12 d-flex justify-content-between" >
+                                <div class="col-12 d-flex justify-content-between" @click="activeContact = contact.name">
                                     <div class="d-flex">
                                         <img :src="contact.avatar" :alt="contact.name" class="me-2">
                                         <div>
@@ -60,12 +60,12 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-8">
-                    <div class="row h-100 flex-column">
-                        <div class="col-12 header py-2 d-flex justify-content-between ">
+                    <div class="row h-100 flex-column" v-for="contact in contacts" v-show="activeContact === contact.name">
+                        <div class="col-12 header py-2 d-flex justify-content-between">
                             <div class="d-flex align-items-center">
-                                <img src="img/avatar_1.jpg" alt="Sofia" class="me-2">
+                                <img :src="contact.avatar" :alt="contact.name" class="me-2">
                                 <div>
-                                    <h6 class="m-0">Michele</h6>
+                                    <h6 class="m-0">{{contact.name}}</h6>
                                     <p class="last-message m-0">Ultimo messaggio inviato</p>
                                 </div>
                             </div>
@@ -76,31 +76,14 @@
                                 <i class="fa-solid fa-ellipsis-vertical me-3 fs-4"></i>
                             </div>
                         </div>
-                        <div class="col-12 flex-grow-1 overflow-y-auto h-50 overflow-y-scroll body-message p-5">
-                            <div class="sent">
-                                <div class="sent-color p-3 lh-1">
-                                    Hai portato a spasso il cane?
-                                    <div class="last-message text-end lh-1">
-                                        12.00
-                                    </div>
+                        <div class="col-12 flex-grow-1 overflow-y-auto h-50 overflow-y-scroll body-message p-4" >
+                            <div class="row m-3" :class="{'sent' : texting.status === 'sent'}" v-for="texting in contact.messages">
+                                <div class="col-4" :class="{'sent-color' : texting.status === 'sent', 'received-color' : texting.status === 'received'}">
+                                    <div class="pt-2">{{texting.message}}</div>
+                                    <div class="text-end last-message">{{texting.date}}</div>
                                 </div>
                             </div>
-                            <div class="sent">
-                                <div class="sent-color p-3 lh-1">
-                                    Ricordati di stendere i panni
-                                    <div class="last-message text-end lh-1">
-                                        12.00
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="received">
-                                <div class="received-color p-3 lh-1">
-                                    Tutto fatto!
-                                    <div class="last-message text-end lh-1">
-                                        12.00
-                                    </div>
-                                </div>
-                            </div>
+                            
                             
                         </div>
                         <div class="col-12 d-flex color-input-message justify-content-around align-items-center px-3 py-2">

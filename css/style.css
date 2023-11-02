@@ -92,23 +92,16 @@ img{
     opacity: 0.4;
 }
 .sent{
-    display: flex;
     justify-content: end;
-    margin-bottom: 10px;
-    
 }
 .sent-color{
     background-color: var(--color-sent);
     border-radius: 10px;
-    width: 300px;
 }
 .received{
-    display: flex;
     justify-content: start;
-    margin-bottom: 10px;
 }
 .received-color{
     background-color: var(--color-white);
     border-radius: 10px;
-    width: 300px;
 }

@@ -5,12 +5,14 @@ createApp({
     data(){
         return {
             contacts : contactList,
+            activeContact : 'Michele'
         }
     },
     methods : {
-
+        
+        
     },
     computed : {
-
+        
     },
 }).mount('#app')

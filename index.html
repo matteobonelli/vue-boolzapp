@@ -90,7 +90,7 @@
                         </div>
                         <div class="col-12 d-flex color-input-message justify-content-around align-items-center px-3 py-2">
                             <i class="fa-regular fa-face-smile fs-4 opacity "></i>
-                            <input type="text" placeholder="Scrivi un messaggio!" class="message-input input-border p-3 h-100">
+                            <input type="text" v-model="newMessage" @keyup.enter="addMessage" placeholder="Scrivi un messaggio!" class="message-input input-border p-3 h-100">
                             <i class="fa-solid fa-microphone fs-4 opacity"></i>
                         </div>
                     </div>

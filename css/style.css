@@ -81,6 +81,7 @@ img{
 }
 .row.border-bottom:hover{
     background-color: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 .row-grey{
     background-color: rgba(0, 0, 0, 0.4);

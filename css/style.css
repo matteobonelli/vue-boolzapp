@@ -8,6 +8,8 @@ body{
     --color-headers: #eaeaea;
     --color-notify : #8edafc;
     --color-icons : #b1b1b1;
+    --color-input-message : #f3eeea;
+    --color-sent : #d5f9ba;
 }
 
 #app{
@@ -26,6 +28,9 @@ img{
     height: 50px;
     border-radius: 50%;
 }
+.color-input-message{
+    background-color: var(--color-input-message);
+}
 .link-size{
     font-size: 12px;
     color: black;
@@ -34,7 +39,10 @@ img{
 .color-icons{
     color: var(--color-icons);
 }
-.color-icons:hover{
+.opacity{
+    opacity: 0.6;
+}
+.color-icons:hover , .opacity:hover{
     cursor: pointer;
 }
 .fa-solid.fa-bell-slash{
@@ -49,6 +57,9 @@ img{
 .notify{
     background-color: var(--color-notify);
 }
+.message-input{
+    width: 85%;
+}
 .input-border{
     border-color: rgba(0, 0, 0, 0.1);
     border-radius: 5px;
@@ -62,9 +73,13 @@ img{
     background-color: var(--color-white);
     border-radius: 5px;
 }
+.body-message{
+    background-image: url("../img/mine.jpg");
+}
 .h0 {
     height: 0;
 }
+
 .border-bottom{
     border-bottom : 1px solid rgba(0, 0, 0, 0.1) !important;
 }
@@ -76,4 +91,24 @@ img{
     color : black;
     opacity: 0.4;
 }
-
+.sent{
+    display: flex;
+    justify-content: end;
+    margin-bottom: 10px;
+    
+}
+.sent-color{
+    background-color: var(--color-sent);
+    border-radius: 10px;
+    width: 300px;
+}
+.received{
+    display: flex;
+    justify-content: start;
+    margin-bottom: 10px;
+}
+.received-color{
+    background-color: var(--color-white);
+    border-radius: 10px;
+    width: 300px;
+}

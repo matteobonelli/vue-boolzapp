@@ -6,6 +6,8 @@ body{
     --background: linear-gradient(180deg, #009688 18.55%, #dbdad7 18.56%);
     --color-white: #ffffff;
     --color-headers: #eaeaea;
+    --color-notify : #8edafc;
+    --color-icons : #b1b1b1;
 }
 
 #app{
@@ -14,13 +16,61 @@ body{
     background: var(--background);
     padding: 20px;
 }
+.bell-icon{
+    background-color: white;
+    border-radius: 50%;
+    padding: 10px;
+}
+img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.link-size{
+    font-size: 12px;
+    color: black;
+    opacity: 0.7;
+}
+.color-icons{
+    color: var(--color-icons);
+}
+.color-icons:hover{
+    cursor: pointer;
+}
+.fa-solid.fa-bell-slash{
+    color: var(--color-notify);
+}
 .contacts{
     background-color: var(--color-white);
 }
 .header{
     background-color: var(--color-headers);
 }
+.notify{
+    background-color: var(--color-notify);
+}
+.input-border{
+    border-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+.btn-light{
+    background-color: var(--color-white) !important;
+    
+}
+.search-bar-glass{
+    border-color: rgba(0, 0, 0, 0.1);
+    background-color: var(--color-white);
+    border-radius: 5px;
+}
 .h0 {
     height: 0;
+}
+.border-bottom{
+    border-bottom : 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+.last-message{
+    font-size: 12px;
+    color : black;
+    opacity: 0.4;
 }
 

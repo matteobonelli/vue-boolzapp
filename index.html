@@ -41,13 +41,13 @@
                             <button class="btn btn-light"><i class="fa-solid fa-magnifying-glass"></i></button>
                             <input type="text" class="w-100 input-border" placeholder="Cerca o inizia nuova chat">
                         </div>
-                        <div class="col-12 flex-grow-1 overflow-y-auto h0 py-2 overflow-y-scroll">
-                            <div class="row border-bottom">
-                                <div class="col-12 d-flex justify-content-between">
+                        <div class="col-12 flex-grow-1 overflow-y-auto h0 overflow-y-scroll">
+                            <div class="row border-bottom py-2" v-for="contact in contacts">
+                                <div class="col-12 d-flex justify-content-between" >
                                     <div class="d-flex">
-                                        <img src="img/avatar_1.jpg" alt="Michele" class="me-2">
+                                        <img :src="contact.avatar" :alt="contact.name" class="me-2">
                                         <div>
-                                            <h6 class="m-0">Michele</h6>
+                                            <h6 class="m-0">{{contact.name}}</h6>
                                             <p class="last-message">Ultimo messaggio inviato</p>
                                         </div>
                                     </div>

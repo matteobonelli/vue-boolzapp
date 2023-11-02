@@ -5,11 +5,11 @@ createApp({
     data(){
         return {
             contacts : contactList,
-            activeContact : 'Michele'
+            activeContact : '',
         }
     },
     methods : {
-        
+       
         
     },
     computed : {

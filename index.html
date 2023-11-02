@@ -42,7 +42,7 @@
                             <input type="text" class="w-100 input-border" placeholder="Cerca o inizia nuova chat">
                         </div>
                         <div class="col-12 flex-grow-1 overflow-y-auto h0 overflow-y-scroll">
-                            <div class="row border-bottom py-2" v-for="contact in contacts">
+                            <div class="row border-bottom py-2" v-for="contact in contacts" @click="activeContact = contact.name" :class="{'row-grey' : activeContact === contact.name}">
                                 <div class="col-12 d-flex justify-content-between" @click="activeContact = contact.name">
                                     <div class="d-flex">
                                         <img :src="contact.avatar" :alt="contact.name" class="me-2">
@@ -60,6 +60,8 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-8">
+                    <div v-if="activeContact === ''" class = " row body-message h-100">
+                    </div>
                     <div class="row h-100 flex-column" v-for="contact in contacts" v-show="activeContact === contact.name">
                         <div class="col-12 header py-2 d-flex justify-content-between">
                             <div class="d-flex align-items-center">

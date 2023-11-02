@@ -79,7 +79,15 @@ img{
 .h0 {
     height: 0;
 }
-
+.row.border-bottom:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.row-grey{
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.row-grey:hover{
+    background-color: rgba(0, 0, 0, 0.4) !important;
+}
 .border-bottom{
     border-bottom : 1px solid rgba(0, 0, 0, 0.1) !important;
 }

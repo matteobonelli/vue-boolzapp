@@ -83,7 +83,7 @@
                                 <div class="col-4" :class="{'sent-color' : texting.status === 'sent', 'received-color' : texting.status === 'received'}">
                                     <div class="dropdown-arrow d-inline" >
                                         <i class="fa-solid fa-chevron-down" @click="clickedMessageId = index, isActiveDropdown = !isActiveDropdown"></i>
-                                        <ul v-show="clickedMessageId === index && isActiveDropdown" class="position-absolute">
+                                        <ul v-show="showDropdown(index)" class="position-absolute">
                                             <li class="text-center" @click="removeMessage(index)">Cancella messaggio</li>
                                         </ul>
                                     </div>

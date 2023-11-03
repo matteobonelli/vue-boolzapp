@@ -46,14 +46,21 @@ createApp({
        },
        selectContact(id){
             const index = this.contacts.findIndex((contact) => contact.id === id)
-            if(index !== -1)[
+            if(index !== -1){
                 this.activeIndex = index
-            ]
+                this.clickedMessageId = null
+                this.isActiveDropdown = false
+            }
        },
        removeMessage(index){
             if(this.clickedMessageId === index){
                 this.contacts[this.activeIndex].messages.splice(this.clickedMessageId, 1)
                 this.isActiveDropdown = false
+            }
+       },
+       showDropdown(index){
+            if(this.clickedMessageId === index && this.isActiveDropdown){
+                return this.activeContactIn.messages[this.clickedMessageId]
             }
        }
                

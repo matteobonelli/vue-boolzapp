@@ -44,7 +44,7 @@
                               </div>
                         </div>
                         <div class="col-12 flex-grow-1 overflow-y-auto h0 overflow-y-scroll">
-                            <div class="row border-bottom py-2" v-for="(contact, index) in contacts" v-show="searchContact(contact)" @click="selectContact(contact.id)" :class="{'row-grey' : activeContactIn.id === contact.id}">
+                            <div class="row border-bottom py-2" v-for="(contact, index) in contacts" v-show="searchContact(contact)" @click="selectContact(contact.id)" :class="{'row-grey' : activeIndex !== null && activeContactIn.id === contact.id  }">
                                 <div class="col-12 d-flex justify-content-between">
                                     <div class="d-flex">
                                         <img :src="contact.avatar" :alt="contact.name" class="me-2">
@@ -62,7 +62,8 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-8">
-                    <div class="row h-100 flex-column" v-for="contact in contacts" v-show="activeContactIn.id === contact.id">
+                    <div class="row h-100 body-message" v-if="activeIndex === null"></div>
+                    <div class="row h-100 flex-column" v-for="contact in contacts" v-else v-show="activeContactIn.id === contact.id">
                         <div class="col-12 header py-2 d-flex justify-content-between">
                             <div class="d-flex align-items-center">
                                 <img :src="contact.avatar" :alt="contact.name" class="me-2">

@@ -11,7 +11,7 @@ createApp({
             activeContact : '',
             newMessage : '',
             searchTerm : '',
-            activeIndex : 0,
+            activeIndex : null,
             isActiveDropdown : false,
             clickedMessageId : null,
         }
@@ -62,12 +62,16 @@ createApp({
             if(this.clickedMessageId === index && this.isActiveDropdown){
                 return this.activeContactIn.messages[this.clickedMessageId]
             }
-       }
+       },
+       
                
     },
     computed : {
         activeContactIn(){
-            return this.contacts[this.activeIndex]
+            if(this.activeIndex !== null){
+                return this.contacts[this.activeIndex]
+            }
+            
         },
     }
 }).mount('#app')

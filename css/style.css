@@ -136,6 +136,7 @@ ul{
     font-size: 14px;
     margin: 0;
     border-radius: 5px;
+    border: 2px solid black;
 }
 li{
     padding: 5px;

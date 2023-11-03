@@ -46,9 +46,9 @@
                                 <div class="col-12 d-flex justify-content-between" @click="activeContact = contact.name">
                                     <div class="d-flex">
                                         <img :src="contact.avatar" :alt="contact.name" class="me-2">
-                                        <div>
+                                        <div >
                                             <h6 class="m-0">{{contact.name}}</h6>
-                                            <p class="last-message">Ultimo messaggio inviato</p>
+                                            <p class="last-message" >{{contact.messages[contact.messages.length - 1].message}}</p>
                                         </div>
                                     </div>
                                     <div class="link-size">12.00</div>

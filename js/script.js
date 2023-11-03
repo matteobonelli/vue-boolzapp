@@ -19,7 +19,7 @@ createApp({
         
             if(this.newMessage !== '' && this.newMessage.trim() !== ''){
                 const newMsg = {
-                    date : dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS),
+                    date : dt.now().setLocale('it').toLocaleString(dt.TIME_SIMPLE),
                     message : this.newMessage,
                     status : 'sent'
                 }
@@ -27,7 +27,7 @@ createApp({
                 this.newMessage = ''
                 setTimeout(() =>{
                     const answer = {
-                        date : dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS),
+                        date : dt.now().setLocale('it').toLocaleString(dt.TIME_SIMPLE),
                         message : 'ok',
                         status : 'received'
                     }

@@ -38,15 +38,17 @@
                             
                         </div>
                         <div class="col-12 header d-flex p-2">
-                            <button class="btn btn-light"><i class="fa-solid fa-magnifying-glass"></i></button>
-                            <input type="text" v-model="searchTerm" class="w-100 input-border" placeholder="Cerca o inizia nuova chat">
+                            <div class="input-group">
+                                <span class="input-group-text bg-white"><i class="fa-solid fa-magnifying-glass"></i></span>
+                                <input type="text" v-model="searchTerm" class="form-control" placeholder="Cerca o inizia una nuova chat" >
+                              </div>
                         </div>
                         <div class="col-12 flex-grow-1 overflow-y-auto h0 overflow-y-scroll">
                             <div class="row border-bottom py-2" v-for="contact in contacts" v-show="searchContact(contact)" @click="activeContact = contact.name" :class="{'row-grey' : activeContact === contact.name}">
                                 <div class="col-12 d-flex justify-content-between" @click="activeContact = contact.name">
                                     <div class="d-flex">
                                         <img :src="contact.avatar" :alt="contact.name" class="me-2">
-                                        <div >
+                                        <div>
                                             <h6 class="m-0">{{contact.name}}</h6>
                                             <p class="last-message" >{{contact.messages[contact.messages.length - 1].message}}</p>
                                         </div>
@@ -68,7 +70,7 @@
                                 <img :src="contact.avatar" :alt="contact.name" class="me-2">
                                 <div>
                                     <h6 class="m-0">{{contact.name}}</h6>
-                                    <p class="last-message m-0">Ultimo messaggio inviato</p>
+                                    <p class="last-message m-0">Ultimo accesso alle 12:00</p>
                                 </div>
                             </div>
                             

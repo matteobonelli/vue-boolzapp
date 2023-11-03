@@ -37,7 +37,8 @@ createApp({
         if(contact.name.toUpperCase().includes(this.searchTerm.toUpperCase())){
             return contact
         }
-       }
+       },
+       
                
     },
     computed : {

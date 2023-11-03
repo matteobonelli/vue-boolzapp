@@ -79,9 +79,16 @@
                             </div>
                         </div>
                         <div class="col-12 flex-grow-1 overflow-y-auto h-50 overflow-y-scroll body-message p-4" >
-                            <div class="row m-3" :class="{'sent' : texting.status === 'sent'}" v-for="texting in contact.messages">
+                            <div class="row m-3" :class="{'sent' : texting.status === 'sent'}" v-for="(texting,index) in contact.messages">
                                 <div class="col-4" :class="{'sent-color' : texting.status === 'sent', 'received-color' : texting.status === 'received'}">
-                                    <div class="pt-2">{{texting.message}}</div>
+                                    <div class="dropdown-arrow d-inline" >
+                                        <i class="fa-solid fa-chevron-down" @click="clickedMessageId = index, isActiveDropdown = !isActiveDropdown"></i>
+                                        <ul v-show="clickedMessageId === index && isActiveDropdown" class="position-absolute">
+                                            <li class="text-center" @click="removeMessage(index)">Cancella messaggio</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="pt-2 break-word">{{texting.message}}</div>
                                     <div class="text-end last-message">{{texting.date}}</div>
                                 </div>
                             </div>

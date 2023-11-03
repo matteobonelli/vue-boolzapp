@@ -109,12 +109,46 @@ img{
     color : black;
     opacity: 0.4;
 }
+.break-word{
+    word-wrap: break-word;
+    width: 95%;
+}
 .sent{
     justify-content: end;
 }
 .sent-color{
     background-color: var(--color-sent);
     border-radius: 10px;
+    position: relative;
+}
+.dropdown-arrow{
+    position: absolute;
+    top: 0px;
+    right: 10px;
+}
+ul{
+    list-style: none;
+    z-index: 1000;
+    right: 0;
+    top: 25px;
+    padding: 0px;
+    background-color: var(--color-white);
+    font-size: 14px;
+    margin: 0;
+    border-radius: 5px;
+}
+li{
+    padding: 5px;
+    border-radius: 5px;
+    
+}
+li:hover{
+    background-color: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+.fa-chevron-down{
+    font-size: 10px;
+    cursor: pointer;
 }
 .received{
     justify-content: start;
@@ -122,4 +156,5 @@ img{
 .received-color{
     background-color: var(--color-white);
     border-radius: 10px;
+    position : relative;
 }

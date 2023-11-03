@@ -12,6 +12,8 @@ createApp({
             newMessage : '',
             searchTerm : '',
             activeIndex : 0,
+            isActiveDropdown : false,
+            clickedMessageId : null,
         }
     },
     methods : {
@@ -47,6 +49,12 @@ createApp({
             if(index !== -1)[
                 this.activeIndex = index
             ]
+       },
+       removeMessage(index){
+            if(this.clickedMessageId === index){
+                this.contacts[this.activeIndex].messages.splice(this.clickedMessageId, 1)
+                this.isActiveDropdown = false
+            }
        }
                
     },

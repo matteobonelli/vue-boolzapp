@@ -1,5 +1,8 @@
+const dt = luxon.DateTime
+
 import {contactList} from './data.js';
 const {createApp} = Vue;
+
 
 createApp({
     data(){
@@ -7,41 +10,49 @@ createApp({
             contacts : contactList,
             activeContact : '',
             newMessage : '',
-            searchTerm : ''
+            searchTerm : '',
+            activeIndex : 0,
         }
     },
     methods : {
        addMessage(){
-        this.contacts.forEach(element => {
-            if(this.activeContact === element.name && this.newMessage !== ''){
+        
+            if(this.newMessage !== '' && this.newMessage.trim() !== ''){
                 const newMsg = {
-                    date : '03/11/2023 00:06:01',
+                    date : dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS),
                     message : this.newMessage,
                     status : 'sent'
                 }
-                element.messages.push(newMsg)
+                this.contacts[this.activeIndex].messages.push(newMsg)  
                 this.newMessage = ''
                 setTimeout(() =>{
                     const answer = {
-                        date : '03/11/2023 00:06:02',
+                        date : dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS),
                         message : 'ok',
                         status : 'received'
                     }
-                    return element.messages.push(answer)
+                    return this.contacts[this.activeIndex].messages.push(answer)
                    }, 1000)
             }
             
-        });
+        ;
        },
        searchContact(contact){
         if(contact.name.toUpperCase().includes(this.searchTerm.toUpperCase())){
             return contact
         }
        },
-       
+       selectContact(id){
+            const index = this.contacts.findIndex((contact) => contact.id === id)
+            if(index !== -1)[
+                this.activeIndex = index
+            ]
+       }
                
     },
     computed : {
-        
-    },
+        activeContactIn(){
+            return this.contacts[this.activeIndex]
+        }
+    }
 }).mount('#app')

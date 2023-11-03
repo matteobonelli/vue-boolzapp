@@ -31,7 +31,7 @@
                         <div class="col-12 notify py-3 d-flex align-items-center">
                     
                             <i class="fa-solid fa-bell-slash fs-4 bell-icon me-2"></i>
-                            <div class="">
+                            <div>
                                 <h6 class="lh-1 m-0">Ricevi notifiche di nuovi messaggi</h6>
                                 <a href="#" class="link-size ">Attiva notifiche desktop</a>
                             </div>
@@ -44,16 +44,16 @@
                               </div>
                         </div>
                         <div class="col-12 flex-grow-1 overflow-y-auto h0 overflow-y-scroll">
-                            <div class="row border-bottom py-2" v-for="contact in contacts" v-show="searchContact(contact)" @click="activeContact = contact.name" :class="{'row-grey' : activeContact === contact.name}">
+                            <div class="row border-bottom py-2" v-for="(contact, index) in contacts" v-show="searchContact(contact)" @click="selectContact(contact.id)" :class="{'row-grey' : activeContactIn.id === contact.id}">
                                 <div class="col-12 d-flex justify-content-between" @click="activeContact = contact.name">
                                     <div class="d-flex">
                                         <img :src="contact.avatar" :alt="contact.name" class="me-2">
                                         <div>
                                             <h6 class="m-0">{{contact.name}}</h6>
-                                            <p class="last-message" >{{contact.messages[contact.messages.length - 1].message}}</p>
+                                            <p class="last-message" v-if=" contact.messages.length !== 0" >{{contact.messages[contact.messages.length - 1].message}}</p>
                                         </div>
                                     </div>
-                                    <div class="link-size">12.00</div>
+                                    <div class="date-size" v-if=" contact.messages.length !== 0">{{contact.messages[contact.messages.length - 1].date}}</div>
                                     
                                 </div>
                             </div>
@@ -62,15 +62,13 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-8">
-                    <div v-if="activeContact === ''" class = " row body-message h-100">
-                    </div>
-                    <div class="row h-100 flex-column" v-for="contact in contacts" v-show="activeContact === contact.name">
+                    <div class="row h-100 flex-column" v-for="contact in contacts" v-show="activeContactIn.id === contact.id">
                         <div class="col-12 header py-2 d-flex justify-content-between">
                             <div class="d-flex align-items-center">
                                 <img :src="contact.avatar" :alt="contact.name" class="me-2">
                                 <div>
                                     <h6 class="m-0">{{contact.name}}</h6>
-                                    <p class="last-message m-0">Ultimo accesso alle 12:00</p>
+                                    <p class="last-message m-0" v-if=" contact.messages.length !== 0" >Ultimo accesso alle {{contact.messages[contact.messages.length - 1].date}}</p>
                                 </div>
                             </div>
                             
@@ -92,7 +90,7 @@
                         </div>
                         <div class="col-12 d-flex color-input-message justify-content-around align-items-center px-3 py-2">
                             <i class="fa-regular fa-face-smile fs-4 opacity "></i>
-                            <input type="text" v-model="newMessage" @keyup.enter="addMessage" placeholder="Scrivi un messaggio!" class="message-input input-border p-3 h-100">
+                            <input type="text" v-model="newMessage" @keyup.enter="addMessage()" placeholder="Scrivi un messaggio!" class="message-input input-border p-3 h-100">
                             <i class="fa-solid fa-microphone fs-4 opacity"></i>
                         </div>
                     </div>
@@ -102,6 +100,7 @@
         </div>
     </div>
     
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.3/build/global/luxon.min.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="js/script.js" type="module"></script>
 </body>

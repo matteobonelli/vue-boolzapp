@@ -45,7 +45,7 @@
                         </div>
                         <div class="col-12 flex-grow-1 overflow-y-auto h0 overflow-y-scroll">
                             <div class="row border-bottom py-2" v-for="(contact, index) in contacts" v-show="searchContact(contact)" @click="selectContact(contact.id)" :class="{'row-grey' : activeContactIn.id === contact.id}">
-                                <div class="col-12 d-flex justify-content-between" @click="activeContact = contact.name">
+                                <div class="col-12 d-flex justify-content-between">
                                     <div class="d-flex">
                                         <img :src="contact.avatar" :alt="contact.name" class="me-2">
                                         <div>
@@ -91,7 +91,7 @@
                         <div class="col-12 d-flex color-input-message justify-content-around align-items-center px-3 py-2">
                             <i class="fa-regular fa-face-smile fs-4 opacity "></i>
                             <input type="text" v-model="newMessage" @keyup.enter="addMessage()" placeholder="Scrivi un messaggio!" class="message-input input-border p-3 h-100">
-                            <i class="fa-solid fa-microphone fs-4 opacity"></i>
+                            <i class="fa-regular fa-paper-plane opacity" @click="addMessage()"></i>
                         </div>
                     </div>
                     

@@ -23,7 +23,7 @@ createApp({
                     message : this.newMessage,
                     status : 'sent'
                 }
-                this.contacts[this.activeIndex].messages.push(newMsg)  
+                this.activeContactIn.messages.push(newMsg)  
                 this.newMessage = ''
                 setTimeout(() =>{
                     const answer = {
@@ -31,7 +31,7 @@ createApp({
                         message : 'ok',
                         status : 'received'
                     }
-                    return this.contacts[this.activeIndex].messages.push(answer)
+                    return this.activeContactIn.messages.push(answer)
                    }, 1000)
             }
             
@@ -53,6 +53,6 @@ createApp({
     computed : {
         activeContactIn(){
             return this.contacts[this.activeIndex]
-        }
+        },
     }
 }).mount('#app')

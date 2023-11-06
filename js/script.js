@@ -14,6 +14,7 @@ createApp({
             activeIndex : null,
             isActiveDropdown : false,
             clickedMessageId : null,
+            showChat : false
         }
     },
     methods : {
@@ -26,6 +27,9 @@ createApp({
                     status : 'sent'
                 }
                 this.activeContactIn.messages.push(newMsg)  
+                this.$nextTick(() => {
+                    this.$refs.messages[this.$refs.messages.length - 1].scrollIntoView({ behavior: 'smooth'})
+                });
                 this.newMessage = ''
                 setTimeout(() =>{
                     const answer = {
@@ -33,7 +37,10 @@ createApp({
                         message : 'ok',
                         status : 'received'
                     }
-                    return this.activeContactIn.messages.push(answer)
+                    this.activeContactIn.messages.push(answer)
+                    this.$nextTick(() => {
+                        this.$refs.messages[this.$refs.messages.length - 1].scrollIntoView({ behavior: 'smooth'})
+                    });
                    }, 1000)
             }
             
@@ -50,13 +57,14 @@ createApp({
                 this.activeIndex = index
                 this.clickedMessageId = null
                 this.isActiveDropdown = false
+                this.showChat = true
             }
        },
-       removeMessage(index){
-            if(this.clickedMessageId === index){
-                this.contacts[this.activeIndex].messages.splice(this.clickedMessageId, 1)
+       removeMessage(){
+            
+                this.activeContactIn.messages.splice(this.clickedMessageId, 1)
                 this.isActiveDropdown = false
-            }
+            
        },
        showDropdown(index){
             if(this.clickedMessageId === index && this.isActiveDropdown){
@@ -73,5 +81,8 @@ createApp({
             }
             
         },
+    },
+    mounted () {
+        console.log()
     }
 }).mount('#app')

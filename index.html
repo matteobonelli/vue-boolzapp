@@ -15,7 +15,7 @@
     <div id="app">
         <div class="container h-100">
             <div class="row h-100 flex-nowrap ">
-                <div class="col-12 col-md-4 contacts">
+                <div class="col-12 col-md-4 d-md-block contacts" :class="{'d-none' : showChat}">
                     <div class="row h-100 flex-column flex-nowrap ">
                         <div class="col-12 header py-2 d-flex justify-content-between border-right">
                             <div class="d-flex align-items-center">
@@ -40,7 +40,7 @@
                         <div class="col-12 header d-flex p-2">
                             <div class="input-group">
                                 <span class="input-group-text bg-white"><i class="fa-solid fa-magnifying-glass"></i></span>
-                                <input type="text" v-model="searchTerm" class="form-control" placeholder="Cerca o inizia una nuova chat" >
+                                <input type="text" v-model.trim="searchTerm" class="form-control" placeholder="Cerca o inizia una nuova chat" >
                               </div>
                         </div>
                         <div class="col-12 flex-grow-1 overflow-y-auto h0 overflow-y-scroll">
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-8">
+                <div class="col-12 col-md-8 d-md-block" :class="{'d-none' : !showChat}">
                     <div class="row h-100 body-message" v-if="activeIndex === null"></div>
                     <div class="row h-100 flex-column" v-for="contact in contacts" v-else v-show="activeContactIn.id === contact.id">
                         <div class="col-12 header py-2 d-flex justify-content-between">
@@ -74,18 +74,19 @@
                             </div>
                             
                             <div class="d-flex align-items-center color-icons">
+                                <i class="fa-solid fa-arrow-left me-3 fs-4" @click ="showChat = false" ></i>
                                 <i class="fa-solid fa-magnifying-glass me-3 fs-4"></i>
                                 <i class="fa-solid fa-paperclip me-3 fs-4"></i>
                                 <i class="fa-solid fa-ellipsis-vertical me-3 fs-4"></i>
                             </div>
                         </div>
                         <div class="col-12 flex-grow-1 overflow-y-auto h-50 overflow-y-scroll body-message p-4" >
-                            <div class="row m-3" :class="{'sent' : texting.status === 'sent'}" v-for="(texting,index) in contact.messages">
+                            <div class="row m-3" :class="{'sent' : texting.status === 'sent'}" ref="messages" v-for="(texting,index) in contact.messages">
                                 <div class="col-4" :class="{'sent-color' : texting.status === 'sent', 'received-color' : texting.status === 'received'}">
                                     <div class="dropdown-arrow d-inline" >
                                         <i class="fa-solid fa-chevron-down" @click="clickedMessageId = index, isActiveDropdown = !isActiveDropdown"></i>
                                         <ul v-show="showDropdown(index)" class="position-absolute">
-                                            <li class="text-center" @click="removeMessage(index)">Cancella messaggio</li>
+                                            <li class="text-center" @click="removeMessage()">Cancella messaggio</li>
                                         </ul>
                                     </div>
                                     
